@@ -221,7 +221,7 @@ async def connection_context(udid):# Create a LockdownClient instance
             click.secho("Error: It seems you are using MobileGestalt file for a different device", fg="red")
             click.secho(f"Device Build: {device_build}, MobileGestalt Build: {cache_build_version}", fg="red")
             click.secho(f"Device ProductType: {device_product_type}, MobileGestalt ProductType: {cache_product_type}", fg="red")
-            #return
+            return
         
         if device_version >= parse_version('17.0'):
             available_address = await create_tunnel(udid)
