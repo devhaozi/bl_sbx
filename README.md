@@ -14,7 +14,7 @@
 
 ### 获取设备的 UDID
 
-手机连接到 macOS 电脑，打开“访达”，在左侧栏选择设备，多次点击设备名称下方的小字，即可看到设备的 UDID，复制保存备用。
+手机连接到 macOS 电脑，打开「访达」，在左侧栏选择设备，多次点击设备名称下方的小字，即可看到设备的 UDID，复制保存备用。
 
 <img src="screenshot1.png">
 
@@ -44,16 +44,16 @@ UUID 获取成功后，脚本会自动上传需要的文件并杀死相关进程
 
 <img src="screenshot3.png">
 
-此时不要点完成，点重试，点几次之后脚本会打开图书App，电脑日志显示有 `StartDisclosureWithTone.m4a` 的访问记录，基本就意味着替换成功了。
+此时不要点「完成」，点「重试」，点几次之后脚本会打开图书App，电脑日志显示有 `StartDisclosureWithTone.m4a` 的访问记录，基本就意味着替换成功了。
 
 <img src="screenshot2.png">
 
-然后点完成等一分钟重启手机，拨打电话测试即可。
+然后点「完成」等一分钟重启手机，拨打电话测试即可。
 
 ### 感谢
 
-[bl_sbx 原项目](https://github.com/khanhduytran0/bl_sbx)
-[misaka 团队的 bl_sbx](https://github.com/34306/bl_sbx)
+- [bl_sbx 原项目](https://github.com/khanhduytran0/bl_sbx)
+- [misaka 团队的 bl_sbx](https://github.com/34306/bl_sbx)
 
 This project is for **educational purposes only**.  
 Do **not** use it for illegal activities.  
