@@ -50,7 +50,7 @@ def get_uuid_from_tracev2_after_reboot(service_provider: LockdownClient):
                 if "/var/containers/Shared/SystemGroup/" in message:
                     try:
                         uuid = message.split("/var/containers/Shared/SystemGroup/")[1].split("/")[0]
-                        if len(uuid) >= 10:
+                        if len(uuid) >= 10 and not uuid.startswith("systemgroup.com.apple"):
                             click.secho(f"Found bookassetd container UUID: {uuid}", fg="green")
                             with open("uuid.txt", "w") as f:
                                 f.write(uuid)
@@ -90,6 +90,7 @@ def reboot_and_get_uuid(service_provider: LockdownClient, udid: str):
         click.secho("Rebooting device...", fg="yellow")
         diagnostics.restart()
         click.secho("Device is rebooting. Waiting for device to reconnect...", fg="yellow")
+        time.sleep(10)
     except Exception as e:
         click.secho(f"Error rebooting device: {e}", fg="red")
         return None, None
