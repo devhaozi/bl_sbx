@@ -40,7 +40,7 @@ python run.py <udid> /path/to/StartDisclosureWithTone.m4a
 python run.py 00008103-001C195E0C88001A /Users/haozi/bl_sbx/StartDisclosureWithTone.m4a
 ```
 
-首次运行设备会重启以尝试获取 `bookassetd` 的容器 UUID，如果提示失败的话，需要按提示手动去图书应用下载一本书，即可获取成功。
+首次运行设备会重启以尝试获取 `bookassetd` 的容器 UUID，需要按提示手动去图书应用下载一本书，即可获取成功。
 
 UUID 获取成功后，脚本会自动上传需要的文件并杀死相关进程，完成后手机上会弹窗提示下载失败。
 
