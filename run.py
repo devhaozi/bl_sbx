@@ -37,6 +37,7 @@ from pymobiledevice3.remote.remote_service_discovery import RemoteServiceDiscove
 from pymobiledevice3.services.dvt.instruments.process_control import ProcessControl
 
 START_DISCLOSURE_PATH = "/var/mobile/Library/CallServices/Greetings/default/StartDisclosureWithTone.m4a"
+STOP_DISCLOSURE_PATH = "/var/mobile/Library/CallServices/Greetings/default/StopDisclosure.caf"  
 GLOBAL_TIMEOUT_SECONDS = 500 #lol, forgot to change it
 
 
@@ -270,7 +271,7 @@ def main_callback(service_provider: LockdownClient, dvt: DvtSecureSocketProxySer
         return
     
     click.secho("If this takes more than a minute please try again.", fg="yellow")
-    click.secho("Waiting for StartDisclosureWithTone replacement to complete...", fg="yellow")
+    click.secho("Waiting for StartDisclosureWithTone.m4a replacement to complete...", fg="yellow")
     success_message = f"{START_DISCLOSURE_PATH}) [Install-Mgr]: Marking download as [finished]"
     for syslog_entry in OsTraceService(lockdown=service_provider).syslog():
         if (posixpath.basename(syslog_entry.filename) == 'bookassetd') and \
@@ -359,12 +360,15 @@ async def connection_context(udid):# Create a LockdownClient instance
             click.secho("Error: StartDisclosureWithTone.m4a file not found", fg="red")
             return
         
-        uuid, service_provider = reboot_and_get_uuid(service_provider, udid)
-        if not service_provider:
-            click.secho("Error: Could not reconnect to device after reboot", fg="red")
-            return
-        if not uuid:
-            click.secho("Warning: Could not get UUID from tracev2. Will try fallback method in main_callback.", fg="yellow")
+
+        #uuid, service_provider = reboot_and_get_uuid(service_provider, udid)
+        #if not service_provider:
+        #    click.secho("Error: Could not reconnect to device after reboot", fg="red")
+        #    return
+        #if not uuid:
+        #    click.secho("Warning: Could not get UUID from tracev2. Will try fallback method in main_callback.", fg="yellow")
+
+        uuid = open("uuid.txt", "r").read().strip() if Path("uuid.txt").exists() else ""
 
         if device_version >= parse_version('17.0'):
             available_address = await create_tunnel(udid)

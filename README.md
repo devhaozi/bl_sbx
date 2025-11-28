@@ -2,7 +2,7 @@
 
 ## 通过替换 iOS 通话录音提醒音频文件为无声音频文件实现禁用通话录音提醒
 
-此 fork 版本已添加无声音频文件 `StartDisclosureWithTone.m4a`，无需自行准备无声音频文件。
+此 fork 版本已添加无声音频文件 `StartDisclosureWithTone.m4a` 与 `StopDisclosure.caf`，无需自行准备无声音频文件。
 
 # 使用说明
 
@@ -51,6 +51,8 @@ UUID 获取成功后，脚本会自动上传需要的文件并杀死相关进程
 <img src="screenshot2.png">
 
 然后点「完成」等一分钟杀掉电话后台，拨打电话测试即可，如果不行的话，可以再运行一次脚本多试几次。
+
+如需替换停止录音提醒音频文件 `StopDisclosure.caf`，在 `run.py` 全局搜索 `StartDisclosureWithTone.m4a`，替换为 `StopDisclosure.caf` 后再运行脚本即可。
 
 注意成功之后不要重启手机，否则有可能会失效，需要重新运行脚本。
 
